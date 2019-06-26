@@ -1,0 +1,108 @@
+﻿@model MyBetApp.Web.Models.TbOdds
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Edit Odd</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OddId" />
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="GameName" class="control-label"></label>
+                    <input asp-for="GameName" class="form-control" />
+                    <span asp-validation-for="GameName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="HomeValue" class="control-label"></label>
+                    <input asp-for="HomeValue" class="form-control" />
+                    <span asp-validation-for="HomeValue" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="DrawValue" class="control-label"></label>
+                    <input asp-for="DrawValue" class="form-control" />
+                    <span asp-validation-for="DrawValue" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="AwayValue" class="control-label"></label>
+                    <input asp-for="AwayValue" class="form-control" />
+                    <span asp-validation-for="AwayValue" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="GameDate" class="control-label"></label>
+                    @*@Html.EditorFor(model => model.GameDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input asp-for="GameDate" class="form-control" id="DtGameDate" />
+                    <span asp-validation-for="GameDate" class="text-danger"></span>
+
+                    <div class='input-group date' id='DtGameDate2'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="StartTime" class="control-label"></label>
+                    <input asp-for="StartTime" class="form-control" />
+                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="StakeAmount" class="control-label"></label>
+                    <input asp-for="StakeAmount" class="form-control" />
+                    <span asp-validation-for="StakeAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="EndTime" class="control-label"></label>
+                    <input asp-for="EndTime" class="form-control" />
+                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="OddCreator" class="control-label"></label>
+                    <input asp-for="OddCreator" class="form-control" />
+                    <span asp-validation-for="OddCreator" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+
+    $(function () {
+        $('#DtGameDate2').datepicker();
+    });
+    </script>
+}
+

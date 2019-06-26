@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="box">
+    <div class="box-header">
+        <br />
+        <br />
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <label>Your Email</label>
+                <input type="text" class="form-control" name="name" value="" readonly id="txtEmail" />
+
+            </div>
+            <div class="col-sm-6 form-group">
+                <label>Your Total Stake Amount</label>
+                <input type="text" class="form-control" name="name" value="" readonly id="txtTotalStake" />
+
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+        <div class="row container">
+            <div class="col-sm-6">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Game</th>
+                            <th>Home</th>
+                            <th>Draw</th>
+                            <th>Away</th>
+                            <th>Stake Amount</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ArsenalVSChelsea</td>
+
+                            <td>   <button type="button" id="mybtn" class="btn my btn-primary">1</button></td>
+                            <td>    <button type="button" class="btn my btn-primary">x</button></td>
+                            <td>   <button type="button" class="btn my btn-primary">2</button></td>
+                            <td>
+                                <input type="text" name="name" id="txtIndStakeAmt" placeholder="Stake Amount" /><br />
+                                <span><a href="#" id="btnIndStake" class="btn btn-success btn-sm">Stake</a></span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <table id="example2" class="table table-bordered table-striped">
+                            <thead>
+                                @*<tr>All My Stakes</tr>*@
+                                <tr>
+                                    <th>Game</th>
+                                    <th>Home Value</th>
+                                    <th>Draw value</th>
+                                    <th>Away Value</th>
+                                    <th>Game Stake Amount</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="SetOddList">
+                                <tr>
+                                    <td><div>ArsenalVSChelsea</div></td>
+
+                                    <td>   <button type="button" id="mybtn" class="btn my btn-primary">1</button></td>
+                                    <td>    <button type="button" class="btn my btn-primary">x</button></td>
+                                    <td>   <button type="button" class="btn my btn-primary">2</button></td>
+                                    <td>
+                                        <input type="text" name="name" value="" placeholder="Stake Amount" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn my btn-danger">Remove</button>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.box-body -->
+</div>
+
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/DataTables-1.10.18/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".my").click(function () {
+                $(this).toggleClass('btn-success');
+               // alert($(this).attr('class'));
+                if ($(this).attr('class') == 'btn my btn-primary btn-success') {
+                    alert("success");
+                }
+                else {
+                        alert("primary");
+                  {
+                    });
+
+        });
+
+        //To populate the table with customers details
+       // $("#LoadingStatus").html("Loading...");
+        //$.get("/Punter/GetOddsList", null, DataBind);
+        //function DataBind(CustList) {
+        //    var SetData = $("#SetOddList");
+
+        //    for (var i = 0; i < OddsList.length; i++) {
+        //        var Data =
+
+
+
+        //        SetData.append(Data);
+        //        //$("#LoadingStatus").html(" ");
+        //    }
+        //}
+    </script>
+}

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<MyBetApp.Web.Models.TbOdds>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+
+
+    if (User.Identity.IsAuthenticated)
+    {
+        <h2>Welcome <p> @User.Identity.Name</p> to the Odd Handler Section</h2>
+    }
+
+}
+
+
+        <div class="container">
+            <div class="row">
+                @*----------------------------------------------------navigations-------------*@
+
+                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true">Add Odds</button>
+                <a href="#" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal" data-backdrop="true">New </a>
+                
+    @*<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal2" data-backdrop="false">Modal without Overlay (false)</button>
+            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal3" data-backdrop="static">Modal with static backdrop</button>*@
+
+            </div>
+
+
+            <h4>Alls Odds  so far</h4>
+
+            <div class="row">
+                <a asp-action="AddOrEdit" class="btn btn-success"><i class="far fa-plus-square"></i> New Odd</a>
+
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Game</th>
+                            <th>StakeAmount</th>
+                            <th>HomeValue</th>
+                            <th>DrawValue</th>
+                            <th>AwayValue</th>
+                            <th>StartTime</th>
+                            <th>EndTime</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.GameName)</td>
+
+                                <td> @Html.DisplayFor(modelItem => item.StakeAmount) </td>
+                                <td> @Html.DisplayFor(modelItem => item.HomeValue)  </td>
+                                <td> @Html.DisplayFor(modelItem => item.DrawValue) </td>
+                                <td> @Html.DisplayFor(modelItem => item.AwayValue) </td>
+                                <td>@Html.DisplayFor(modelItem => item.StartTime)   </td>
+                                <td> @Html.DisplayFor(modelItem => item.EndTime) </td>
+                                <td> @Html.DisplayFor(modelItem => item.Status)  </td>
+                                @*<td>
+                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                        </td>*@
+                                <td>
+                                    <a asp-action="AddOrEdit" asp-route-id="@item.OddId"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.OddId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+
+
+
+            @*.........................................................modal to Add odds...................*@
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add New Odd</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                @*<div class="form-group">
+            <select id="SelGame"  class="form-control">
+                <option value="value">text</option>
+            </select>
+        </div>*@
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtGame" name="name" value="" placeholder="Enter Home Odd Value" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtStakeAmount" name="name" value="" placeholder="Enter Home Odd Value" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtHomeVal" name="name" value="" placeholder="Enter Home Odd Value" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtDrawVal" name="name" value="" placeholder="Enter Draw Odd Value" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtAwayVal" name="name" value="" placeholder="Enter Home Odd Value" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtStartTime" name="name" value="" placeholder="Enter Date - dd/MM/yyyy" />
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtEndTime" name="name" value="" placeholder="Enter Date - dd/MM/yyyy" />
+
+                                </div>
+                                <div class="form-group">
+                                    <select id="SelStatus" class="form-control">
+                                        <option value="value">True</option>
+                                    </select>
+                                </div>
+
+
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Add Odd</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+<!-- Modal -->
